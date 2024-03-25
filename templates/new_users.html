@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+
+{% block title %}create user
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+
+ <div class="form_container">
+    <h1>Create a User</h1>
+    <form method="POST" action="/users/new">
+        <div class="form_div">
+            <label for="new_user_first_name" class="new_user_first_name_label">First Name</label>
+            <br>
+            <input type="text" id="new_user_first_name" placeholder="First Name" name="first_name" required>
+        </div>
+        <div class="form_div">
+            <label for="new_user_last_name" class="new_user_first_name_label">Last Name</label>
+            <br>
+            <input type="text" id="new_user_last_name" placeholder="Last name" name="last_name" required>
+        </div>
+        <div class="form_div">
+            <label for="new_user_upload_img" class="new_user_image_label">Upload Image</label>
+            <br>
+            <input type="url" id="new_user_img_upload" placeholder="Image URL" name="image_url">
+        </div>
+        <div class="form_div">
+            <button type="submit" id="submit_new_user">Add</button>
+        </div>
+    </form>
+</div> 
+
+
+{% endblock %}

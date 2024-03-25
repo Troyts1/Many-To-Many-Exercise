@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Users
+{% endblock %}
+
+{% block content %}
+<div class="form_container">
+    <h1>Edit Your Profile</h1>
+    <form action="/users/{{ user.id }}/edit" method="post" enctype="multipart/form-data">
+        <div class="form_div">
+            <label for="edit_user_first_name" class="edit_user_first_name_label">First Name</label>
+            <br>
+            <input type="text" id="new_user_first_name" placeholder="First Name" name="first_name" required>
+        </div>
+        <div class="form_div">
+            <label for="edit_user_last_name" class="edit_user_last_name_label">Last Name</label>
+            <br>
+            <input type="text" id="edit_user_last_name" placeholder="Last name" name="last_name" required>
+        </div>
+        <div class="form_div">
+            <label for="edit_user_image" class="edit_user_image_label">Profile Image</label>
+            <br>
+            <input type="url" id="edit_user_image" name="image_url">
+        </div>
+        <div class="form_div">
+            <button type="button" id="delete_button" onclick="location.href='/users';">Cancel</button>
+            <button id="submit_edit_user" type="submit">Update</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+
+
