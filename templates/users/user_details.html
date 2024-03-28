@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}
+User Profile
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="profile-container">
+    <div class="user-img">
+        <img src="{{ user.image_url }}" alt="User Image">
+    </div>
+    <div class="user-info">
+        <div class="name">{{ user.first_name }} {{ user.last_name }}</div>
+        <div class="actions">
+            <form action="/users/{{ user.id }}/edit" method="GET">
+                <button id="edit" type="submit">Edit</button>
+            </form>
+            <form action="/users/{{ user.id }}/delete" method="POST">
+                <button id="delete_button" type="submit">Delete</button>
+            </form>
+        </div>
+          <h3>Posts</h3>
+          <div id="post_details_container">
+            {% for post in posts %}
+            <div>
+                <p><a href="{{ url_for('show_posts', post_id=post.id) }}">{{ post.title }}</a></p>
+            </div>
+            {% endfor %}
+            <form action="/users/{{ user.id }}/posts/new" method="GET">
+                <button id="add_posts" type="submit">Add Post</button>
+            </form>
+        </div>
+        
+</div>
+
+    {% endblock %}
+    
+
+
+
+
+
+

@@ -1,33 +1,69 @@
-/* Styles for the edit button */
 
-.class  menu{
-    position: absolute;
-    top: 0px;
+#add_posts{
+color: #ffffff;
+background-color: blue;
+width: 100px;
+height: 30px;
 }
 
-#edit {
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-img img {
+    width: 300px;
+    height: auto;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.actions {
+    display: flex;
+    gap: 10px; 
+}
+
+#user_img img {
+    width: 300px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.name {
+    font-weight: bold;
+    color: blue; 
+    font-size: 26px; 
+}
+
+.actions #edit,
+.actions #delete_button {
     color: white;
-    background-color: blue;
     padding: 5px;
     width: 100px;
     height: 30px;
-    /* margin: 10px; */
-    display: inline-block;
-    text-align: center;
-    /* line-height: 30px; */
+    background-color: blue; 
+    border: none;
+    margin-top: 10px;
 }
 
-/* Styles for the delete button */
-#delete_button {
-    color: white;
-    background-color: red;
+.actions #delete_button {
+    background-color: red; 
+    margin-left: 10px;
+}
+
+
+#submit_edit_user {
+    background-color: green;
+    margin-left: 10px;
+    color: #ffffff;
     padding: 5px;
-    width: 100px;
+    width: 60px;
     height: 30px;
-    /* margin: 10px; */
-    display: inline-block;
-    text-align: center;
-    /* line-height: 30px; */
 }
 
 li a {
@@ -35,33 +71,28 @@ li a {
     color: #1335bc; 
     font-size: 18px;
     padding: 2px;
-    
 }
 
 img {
-    width: 300px; /* Set the width of the image to 300 pixels */
-    height: auto; /* Automatically calculate the height to maintain the aspect ratio */
+    width: 300px;
+    height: auto;
 }
-
 
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Optional: Centers vertically */
-    margin: 0; /* Optional: Removes default margin */
+    height: 100vh;
+    margin: 0;
 }
 
 label {
-   
     font-size: 16px; 
     font-weight: bold; 
     margin: 10px;
 }
 
-
 input, select, textarea {
-   
     font-size: 14px; 
     width: 300px;
     margin-top: 5px;
@@ -73,50 +104,182 @@ input, select, textarea {
 }
 
 
-#submit_new_user{
+#submit_edit_post {
     color: white;
     background-color: green;
     padding: 5px;
     width: 60px;
     height: 30px;
+    
 }
 
-#submit_edit_user{
+#cancel_edit_post {
+    color: rgb(0, 0, 0);
+    background-color: white;
+    padding: 5px;
+    width: 100px;
+    height: 30px;
+    border: 1.5px solid green; 
+}
+
+
+#users_all_btn {
+    color: white;
+    background-color: rgb(89, 89, 89);
+    padding: 5px;
+    width: 100px;
+    height: 30px;
+}
+
+
+.form_div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.form_div input[type="text"] {
+    flex: 0 0 auto;
+    margin-left: 10px;
+}
+
+.post_btns {
+    display: flex;
+    justify-content: flex-end; 
+}
+
+.post_btns button {
+    margin-left: 10px; 
+}
+
+#edit_profile {
+    text-align: center; 
+}
+
+.blog_post_btns {
+    display: flex;
+    justify-content: flex-end; 
+}
+
+.post_btns button {
+    margin-left: 10px; 
+}
+
+#submit_add_post {
     color: white;
     background-color: green;
     padding: 5px;
     width: 60px;
     height: 30px;
+    border: 0px;
+    
+}
+
+#cancel_add_post {
+    color: rgb(255, 255, 255);
+    background-color: rgb(67, 182, 211);
+    padding: 5px;
+    width: 100px;
+    height: 30px;
+    border: 0px; 
+    margin: 0px 8px 0px 8px;
+}
+
+#blog_h1{
+    text-align: center;
+}
+
+#post_details_container{
+    display: flex;
+   
+}
+
+#post_details_cancel {
+    color: #000;
+    background-color: #fff;
+    padding: 5px;
+    width: 100px;
+    height: 30px;
+    border: 1.5px solid blue;
+    margin: 0 8px;
 }
 
 
-#cancel_edit_user{
-    color: green;
-    background-color: white;
-    padding: 5px;
-    width: 100px;
-    height: 30px;}
-
-#users_all_btn{
-color: rgb(54, 54, 54);
-    background-color: white;
-    padding: 5px;
-    width: 100px;
-    height: 30px;}
-
-
-#edit{
+#post_details_edit {
     color: rgb(255, 255, 255);
-            background-color: blue;
-            padding: 5px;
-            margin: 10px;
-            width: 100px;
-            height: 30px;}
- 
-#delete_button{
-    color: rgb(255, 255, 255);
+    background-color:blue;
+    padding: 5px;
+    width: 50px;
+    height: 30px;
+    border: 0px; 
+    margin: 0px 8px 0px 8px;
+}
+
+#post_details_delete {
+    color: black;
     background-color: red;
     padding: 5px;
-    margin: 10px;
     width: 100px;
-    height: 30px;}
+    height: 30px;
+    border: 0px; 
+    margin: 0px 8px 0px 8px;
+}
+
+#cancel_button_edit_users {
+    background-color: white; 
+    margin-left: 10px;
+    border: solid 1.5px;
+    border-color: green; 
+    width: 100px;
+    height: 30px;
+}
+
+#delete_button_profiles {
+    color: black;
+    background-color: red;
+    padding: 5px;
+    width: 100px;
+    height: 30px;
+    border: 0px; 
+    margin: 0px 8px 0px 8px;
+}
+
+
+#profile_container_old {
+    display: flex;
+}
+
+#button_container {
+    display: flex;
+}
+
+#user_name {
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+img{
+    margin-right: 50px;
+}
+
+#post_details_container{
+    display: flex;
+    flex-direction: column;
+}
+
+#post_edit_buttons {
+    display: flex;
+    flex-direction: row; 
+}
+
+
+#new_user_create {
+    color: #000;
+    background-color: #fff;
+    padding: 5px;
+    width: 100px;
+    height: 30px;
+    border: 1.5px solid blue;
+    margin: 0 8px;
+}

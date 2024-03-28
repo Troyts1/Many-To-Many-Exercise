@@ -10,7 +10,7 @@ Users
 
     <ul class="user_list">
         {% for user in users %}
-            <li><a href="/{{user.id}}">{{ user.first_name }} {{ user.last_name }}</a>
+            <li><a href="/users/{{user.id}}">{{ user.first_name }} {{ user.last_name }}</a>
             </li>
             
         {% endfor %}
