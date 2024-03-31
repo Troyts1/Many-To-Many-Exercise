@@ -11,6 +11,9 @@ def connect_db(app):
     db.init_app(app)
 
 
+# ******************************** user models *****************************************
+
+
 class User(db.Model):
     """User."""
 
@@ -34,6 +37,9 @@ class User(db.Model):
         return f"{self.first_name} {self.last_name}"
 
 
+# ******************************** post model *****************************************
+
+
 class Post(db.Model):
     """Blog post."""
 
@@ -44,6 +50,34 @@ class Post(db.Model):
     content = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now)  
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+# ******************************** tag models *****************************************
+
+class PostTag(db.Model):
+    """Tags on all posts"""
+
+    __tablename__ = "posts_tags"
+
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), primary_key=True)
+    tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'), primary_key=True)
+
+
+class Tag(db.Model):
+    """Added post tags"""
+
+    __tablename__ = 'tags'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Text, nullable=False, unique=True)
+    
+
+    posts = db.relationship('Post', secondary="posts_tags", backref="tags")
+
+
+
+
+
+
 
 
 

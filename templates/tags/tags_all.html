@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Tags{% endblock %}
+
+{% block content %}
+<div class="verticle_elements">
+<h1>Tags</h1>
+
+<ul>
+  {% for tag in tags %}
+  <li><a href="/tags/{{ tag.id }}">{{ tag.name }}</a></li>
+  {% endfor %}
+</ul>
+
+<p><a class="general_blue" href="/new/tags">Add Tag</a></p>
+</div>
+{% endblock %}

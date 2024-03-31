@@ -1,4 +1,6 @@
 
+
+
 #add_posts{
 color: #ffffff;
 background-color: blue;
@@ -283,3 +285,91 @@ img{
     border: 1.5px solid blue;
     margin: 0 8px;
 }
+
+
+.general_blue {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: blue;
+    padding: 8px 20px;
+    width: 100px;
+    height: 30px;
+    margin: 0 8px;
+}
+
+.verticle_elements {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+  }
+  
+  .small_submit {
+    background-color: green;
+    margin-left: 10px;
+    color: #ffffff;
+    padding: 5px;
+    width: 80px;
+    height: 30px;
+    border: 0px;
+}
+
+.general_aqua_blue {
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+    background-color: rgb(0, 166, 255);
+    padding: 5px 5px;
+    width: 60px;
+    height: 30px;
+    margin: 0 8px;
+    border: 0px;
+}
+
+.button_container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form_container {
+    display: flex;
+    flex-direction: column; 
+}
+
+.small_blue {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: blue;
+    padding: 5px 5px;
+    width: 60px;
+    height: 30px;
+    margin: 0 8px;
+}
+
+.delete_button {
+    color: rgb(255, 255, 255);
+    background-color: red;
+    padding: 5px;
+    width: 100px;
+    height: 30px;
+    border: 0px; 
+    margin: 0px 0px 0px 0px;
+}
+
+
+.cancel_general {
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    width: 100px;
+    height: 30px;
+    border: 1.5px solid;
+    border-color:rgb(67, 182, 211);
+    margin: 0px 8px 0px 8px;
+}
+
+.checkbox_container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+}
+
