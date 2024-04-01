@@ -5,24 +5,30 @@ Edit Users
 {% endblock %}
 
 {% block content %}
-<div class="form_container">
-    <h1 id="edit_profile">Edit Your Post</h1>
-    <form action="/posts/{{ post.id }}/edit" method="POST" enctype="multipart/form-data">
-        <div class="form_div">
-            <label for="post_title">Post Title:</label>
-            <input type="text" id="post_title" placeholder="Place your title" name="title" value="{{ post.title }}" required>
-        </div>
-        <div class="form_div">
-            <label for="post_content">Post Content:</label>
-            <input type="text" id="post_content" cols="50" placeholder="Add your post" name="content" value="{{ post.content }}" required>
-        </div>
-   
-        <div class="post_btns">
-            <button id="cancel_edit_post" type="button" class="btn btn-secondary" onclick="window.location.href='/posts/{{ post.id }}'">Cancel</button>
-            <button id="submit_edit_post" type="submit" class="btn btn-primary">Update</button>
-        </div>
-    </form>
-</div>
+
+<form method="POST">
+    <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" id="title" name="title" value="{{ post.title }}">
+    </div>
+    <div class="form-group">
+        <label for="content">Content:</label>
+        <textarea class="form-control" id="content" name="content">{{ post.content }}</textarea>
+    </div>
+<br>
+    <div class="form-group">
+        <label>Select Tags:</label>
+        {% for tag in tags %}
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="tags" id="tag{{ tag.id }}" value="{{ tag.id }}" {% if tag in post.tags %}checked{% endif %}>
+                <label class="form-check-label" for="tag{{ tag.id }}">{{ tag.name }}</label>
+            </div>
+        {% endfor %}
+    </div>
+    <button type="button" onclick="window.location.href='/posts/{{ post.id }}'" class="cancel_general">Cancel</button>
+    <button type="submit" class="small_submit">Update</button>
+</form>
+
 {% endblock %}
 
 

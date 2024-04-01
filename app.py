@@ -14,12 +14,6 @@ app.app_context().push()
 connect_db(app)
 db.create_all()
 
-# @app.route('/')
-# def Home_Page():
-#     """Home page"""
-
-#     return redirect("/users")
-
 @app.route('/')
 def Home_Page():
     """Home page"""
@@ -97,27 +91,31 @@ def delete_users(user_id):
 
 # ************************************ posts routes ****************************************
 
+
 @app.route('/users/<int:user_id>/posts/new', methods=['GET'])
 def posts_new_form(user_id):
-    """Show post form form"""
-
+    # this is showing the users new post page
     user = User.query.get_or_404(user_id)
-    return render_template('posts/new_post_form.html', user=user)
+    tags = Tag.query.all()
+    return render_template('posts/new_post_form.html', user=user, tags=tags)
 
 
 @app.route('/users/<int:user_id>/posts/new', methods=["POST"])
 def posts_new(user_id):
-    """Handle form submission for creating a new post for a specific user"""
-
     user = User.query.get_or_404(user_id)
-    new_post = Post(title=request.form['title'],
-                    content=request.form['content'],
-                    user=user)
+    title = request.form['title']
+    content = request.form['content']
+    selected_tags = request.form.getlist('tags')
+    new_post = Post(title=title, content=content, user=user)
+    
+    for tag_id in selected_tags:
+        tag = Tag.query.get_or_404(tag_id)
+        new_post.tags.append(tag)
 
     db.session.add(new_post)
     db.session.commit()
-    flash(f"Post '{new_post.title}' added.")
 
+    flash(f"Post '{new_post.title}' added.")
     return redirect(f"/users/{user_id}")
 
 
@@ -125,7 +123,8 @@ def posts_new(user_id):
 def show_posts(post_id):
     """Show a page post info"""
     post = Post.query.get_or_404(post_id)
-    return render_template('posts/post_detail.html', post=post)
+    tags = post.tags
+    return render_template('posts/post_detail.html', post=post, tags=tags)
 
 
 @app.route('/posts/<int:post_id>/edit')
@@ -133,23 +132,30 @@ def posts_edit(post_id):
     """Show a form to edit an existing post"""
 
     post = Post.query.get_or_404(post_id)
-    user = post.user  
-    return render_template('posts/edit_page_post.html', post=post, user=user)
+    user = post.user
+    tags = Tag.query.all()
+    return render_template('posts/edit_page_post.html', post=post, user=user, tags=tags)
 
 
 @app.route('/posts/<int:post_id>/edit', methods=["POST"])
 def posts_update(post_id):
     """Form handler for updating a post"""
-
     post = Post.query.get_or_404(post_id)
     post.title = request.form['title']
     post.content = request.form['content']
 
-    db.session.add(post)
+    post.tags.clear()
+
+    selected_tags = request.form.getlist('tags')
+    for tag_id in selected_tags:
+        tag = Tag.query.get_or_404(tag_id)
+        post.tags.append(tag)
+
     db.session.commit()
     flash(f"Post '{post.title}' edited.")
 
     return redirect(f"/users/{post.user_id}")
+
 
 
 @app.route('/posts/<int:post_id>/delete', methods=["POST"])
